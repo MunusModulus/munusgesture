@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Munus Gesture</title>
+  <script src="js/config.js"></script>
+  <script src="js/x.js"></script>
+  <script src="js/tween2.js"></script>
+  <script src="js/chrome_gestures.js"></script>
+  <link href="css/option_page.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="main_wrapper">
+<ul class="tabs" id="menu_tabs">
+  <li class="basics"><a href="#basics" class="active"><span data-i18n="tab_basics">Basics</span></a></li>
+  <li class="actions"><a href="#actions"><span data-i18n="tab_actions">Gestures</span></a></li>
+  <li class="drag-actions"><a href="#drag-actions"><span data-i18n="tab_drag_actions">Super Drag</span></a></li>
+  <li class="click-actions"><a href="#click_actions"><span data-i18n="tab_click_actions">Rocker Gestures</span></a></li>
+  <li class="site-settings"><a href="#site_settings"><span data-i18n="tab_site_settings">Site Settings</span></a></li>
+  <li class="advanced"><a href="#advanced"><span data-i18n="tab_advanced">Advanced</span></a></li>
+  <li class="about"><a href="#about"><span data-i18n="tab_about">About</span></a></li>
+</ul>
+<div id="container">
+<div id="inner_container">
+<section id="basics" class="content">
+
+  <div class="description basics-note" data-i18n="options_esc_cancel_desc">
+    Pressing the ESC key forces a cancel of the gesture or action currently being performed.
+  </div>
+
+  <div class="basics-group">
+    <h3 data-i18n="options_basics_general_heading">General</h3>
+
+    <div class="basics-row">
+      <input type="checkbox" id="mouse_track">
+      <label for="mouse_track" data-i18n="options_mouse_track">Draw mouse track</label>
+    </div>
+
+    <div class="basics-row basics-sub">
+      <input type="checkbox" id="visualized_arrow">
+      <label for="visualized_arrow" data-i18n="options_visualized_arrow">Visualize Arrows</label>
+    </div>
+
+    <div class="basics-row">
+      <input type="checkbox" id="superdrag">
+      <label for="superdrag" data-i18n="options_superdrag">Super Drag</label>
+    </div>
+
+    <div id="image_behavior_setting" class="basics-sub basics-image-behavior" style="display: none;">
+      <div class="basics-image-behavior-label" data-i18n="options_image_behavior_label">
+        Image Link Behavior:
+      </div>
+      <div class="basics-image-behavior-options">
+        <label>
+          <input type="radio" name="image_link_behavior" value="link">
+          <span data-i18n="options_image_behavior_link">Treat as link</span>
+        </label>
+        <label>
+          <input type="radio" name="image_link_behavior" value="image">
+          <span data-i18n="options_image_behavior_image">Treat as image</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="basics-row">
+      <input type="checkbox" id="suppress_contextmenu">
+      <label for="suppress_contextmenu" data-i18n="options_suppress_contextmenu">Suppress context menu when gesture fails</label>
+    </div>
+
+    <div class="basics-row">
+      <input type="checkbox" id="useMousewheel">
+      <label for="useMousewheel" data-i18n="options_useMousewheel" class="basics-highlight">Switch tabs with right-click + mouse wheel</label>
+    </div>
+  </div>
+
+  <div class="basics-group">
+    <h3 data-i18n="options_gesture_recognition_heading">Gesture Recognition</h3>
+
+    <div class="basics-control-row">
+      <label for="minimumUnit" data-i18n="options_minimumUnit">Minimum unit for gesture (px)</label>
+      <div class="ranges">
+        <span class="mins">0</span>
+        <input type="range" id="minimumUnit" max="50" min="1" step="1" placeholder="10">
+        <span class="maxs">50</span>
+      </div>
+      <span class="outputs" id="minimumUnit_value"></span>
+      <button data-i18n="options_reset">Reset</button>
+    </div>
+
+    <div class="basics-control-row">
+      <label for="gestureTimeout" data-i18n="options_gestureTimeout">Gesture timeout (sec. 0 for none)</label>
+      <div class="ranges">
+        <span class="mins">0</span>
+        <input type="range" id="gestureTimeout" max="5" min="0" step="1" placeholder="0">
+        <span class="maxs">5</span>
+      </div>
+      <span class="outputs" id="gestureTimeout_value"></span>
+      <button data-i18n="options_reset">Reset</button>
+    </div>
+  </div>
+
+  <div class="basics-group">
+    <h3 data-i18n="options_scroll_heading">Scroll</h3>
+
+    <div class="basics-row">
+      <input type="checkbox" id="useSmoothScroll">
+      <label for="useSmoothScroll" data-i18n="options_useSmoothScroll">Enable Smooth Scroll</label>
+    </div>
+
+    <div class="basics-control-row basics-sub SmoothScroll">
+      <label for="smoothScrollFactor" data-i18n="options_smoothScrollFactor">Smooth Scroll Speed (sec)</label>
+      <div class="ranges">
+        <span class="mins">0.01</span>
+        <input type="range" id="smoothScrollFactor" max="1" min="0.01" step="0.01" placeholder="0.2">
+        <span class="maxs">1</span>
+      </div>
+      <span class="outputs" id="smoothScrollFactor_value"></span>
+      <button data-i18n="options_reset">Reset</button>
+    </div>
+  </div>
+
+  <div class="basics-group">
+    <h3 data-i18n="options_appearance">Appearance</h3>
+
+    <div class="basics-inline-row">
+      <span data-i18n="options_line_color">Line Color:</span>
+      <input type="color" id="line_color">
+    </div>
+
+    <div class="basics-control-row basics-sub">
+      <label for="line_width" data-i18n="options_line_width">Line Width:</label>
+      <div class="ranges">
+        <span class="mins">1</span>
+        <input type="range" id="line_width" max="20" min="1" step="1">
+        <span class="maxs">20</span>
+      </div>
+      <span class="outputs" id="line_width_value"></span>
+      <button data-i18n="options_reset">Reset</button>
+    </div>
+  </div>
+
+</section>
+
+<section id="actions" class="content">
+<div class="description" style="margin-bottom: 20px; padding: 10px; background: #eef; border-left: 5px solid #4285f4;" data-i18n="options_actions_send_key_warning">
+  Note: Send Key sends key input to the current website.<br>
+  If the site has a shortcut assigned, it will take priority.<br>
+  Browser shortcuts (e.g. Ctrl+N) may not work depending on the environment.
+</div>
+
+<div class="box">
+  <h3 data-i18n="options_normal_gesture">Normal gestures</h3>
+  <div class="field_action">
+    <button id="normal_append_action" data-i18n="options_add_new_gesture">Add Gesture</button>
+  </div>
+  <dl id="normal_action_list"></dl>
+</div>
+
+<div class="drag-row action-sub-row">
+  <div class="box">
+    <h3 data-i18n="options_left_click_gesture">Left-click + gesture</h3>
+    <div class="field_action">
+      <button id="normal_lplus_append_action" data-i18n="options_add_new_gesture">Add Gesture</button>
+    </div>
+    <dl id="normal_lplus_action_list"></dl>
+  </div>
+
+  <div class="box">
+    <h3 data-i18n="options_modifier_gesture">Modifier key + gesture</h3>
+    <div class="field_action">
+      <button id="normal_modifier_append_action" data-i18n="options_add_new_gesture">Add Gesture</button>
+    </div>
+    <dl id="normal_modifier_action_list"></dl>
+  </div>
+</div>
+
+<div class="box" style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;">
+  <h3 data-i18n="options_ghost_click_suppress_time">Ghost Click Suppression Time</h3>
+  <div class="field_action" style="display: flex; align-items: center; gap: 10px;">
+    <input type="number" id="ghost_click_suppress_time" min="0" max="1000" step="50" style="width: 80px; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+    <span>ms</span>
+  </div>
+  <div class="description" style="margin-top: 10px; font-size: 0.9em; color: #666;" data-i18n="options_ghost_click_suppress_desc">
+    Time to suppress unintended clicks immediately after a gesture.
+  </div>
+</div>
+</section>
+
+<section id="drag-actions" class="content">
+  <div class="box">
+    <h3 data-i18n="options_for_link">for link</h3>
+
+    <div class="field_action">
+      <button id="linkdrag_append_action" data-i18n="options_add_new_gesture">Add Gesture</button>
+    </div>
+    <dl id="linkdrag_action_list"></dl>
+  </div>
+
+  <div class="drag-row">
+    <div class="box">
+      <h3 data-i18n="options_for_image">for image</h3>
+
+      <div class="field_action">
+        <button id="imagedrag_append_action" data-i18n="options_add_new_gesture">Add Gesture</button>
+      </div>
+      <dl id="imagedrag_action_list"></dl>
+    </div>
+
+    <div class="box">
+      <h3 data-i18n="options_for_text">for text</h3>
+
+      <div class="field_action">
+        <button id="textdrag_append_action" data-i18n="options_add_new_gesture">Add Gesture</button>
+      </div>
+      <dl id="textdrag_action_list"></dl>
+    </div>
+  </div>
+</section>
+
+<section id="click_actions" class="content">
+  <h2 data-i18n="tab_click_actions">Rocker Gestures</h2>
+  <div class="description" style="margin-bottom: 20px; padding: 10px; background: #eef; border-left: 5px solid #4285f4;" data-i18n="options_click_actions_desc">
+    <p>
+      Configure rocker gestures such as right-click while holding left-click.<br>
+      Does not affect existing gestures or dragging.
+    </p>
+  </div>
+  <div id="click_actions_container">
+      <!-- Generated dynamically by options.js -->
+  </div>
+  <div class="box" style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 20px;">
+    <h3 data-i18n="options_click_action_suppress_time">Rocker Gesture Guard Time (ms)</h3>
+    <div class="field_action" style="display: flex; align-items: center; gap: 10px;">
+      <input type="number" id="click_action_suppress_time" min="0" max="10000" step="100" style="width: 80px; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
+      <span>ms</span>
+    </div>
+    <div class="description" style="margin-top: 10px; font-size: 0.9em; color: #666;">
+      <strong data-i18n="options_click_action_suppress_desc">The "guard time" to prevent the context menu from appearing accidentally after a rocker gesture.</strong><br>
+      <span data-i18n="options_click_action_suppress_warning">Warning: If this number is too long, normal click and right-click operations will not be accepted for a certain period of time immediately after the action, making the browser feel frozen.</span>
+    </div>
+  </div>
+</section>
+
+<section id="site_settings" class="content">
+  <h2 data-i18n="action_name_site_settings">Site-specific gesture settings</h2>
+  <div class="description" style="margin-bottom: 20px; padding: 10px; background: #eef; border-left: 5px solid #4285f4;">
+    <span data-i18n="options_site_settings_desc">You can freely assign actions to gestures for specific websites.<br>URL patterns support regular expressions (e.g., youtube\.com).</span><br>
+    <strong data-i18n="options_site_settings_warning">Note: Key input is sent to the current website.<br>If the site has a shortcut assigned, it will take priority.<br>Browser shortcuts (e.g. Ctrl+N) may not work depending on the environment.</strong>
+  </div>
+  <div id="site_list_container"></div>
+  <div style="margin-top: 20px;">
+    <button id="add_site_button" style="padding: 10px 20px; background: #4285f4; color: white; border: none; border-radius: 4px; cursor: pointer;" data-i18n="options_add_site_button">Add New Site Rule</button>
+  </div>
+</section>
+
+<section id="advanced" class="content">
+  <textarea id="config_text"></textarea>
+
+  <div>
+    <button id="export_conf" data-i18n="options_export">Export Configuration</button>
+  </div>
+  <div>
+    <button id="import_conf" data-i18n="options_import">Import Configuration</button>
+  </div>
+  <div class="margin">
+    <button id="reset_all" data-i18n="options_reset_all">Reset All Configuration</button>
+    <span data-i18n="options_reset_all_warning">( Please backup current configuration. )</span>
+  </div>
+</section>
+
+<section id="about" class="content">
+  <dl>
+    <dt>Name:</dt>
+    <dd>Munus Gesture<br><span class="base-note">Based on "Gestures for Chrome".</span></dd>
+    <dt>Version:</dt>
+    <dd>v<span id="ExtensionVersion"></span></dd>
+    <dt>Modified and maintained by:</dt>
+    <dd>Wacallanaides</dd>
+    <dt>License:</dt>
+    <dd><a href="https://opensource.org/license/mit/" target="_blank">MIT</a></dd>
+    <dt>Thanks:</dt>
+    <dd class="about-thanks">
+      <span class="about-inline-label">Original Author:</span>
+      <a href="https://github.com/os0x" target="_blank">os0x</a><br>
+      <a href="http://gimite.net/" target="_blank">Gimite</a>,
+      <a href="http://www.xuldev.org/blog/" target="_blank">Gomita</a>,
+      <a href="https://github.com/ArcCosine" target="_blank">Arc Cosine</a>
+    </dd>
+    <dt>Special Thanks:</dt>
+    <dd class="about-thanks">
+      <a href="https://antigravity.google/" target="_blank">Antigravity</a>,
+      <a href="https://chatgpt.com/" target="_blank">Chat GPT Plus</a>
+    </dd>
+  </dl>
+</section>
+</div>
+</div>
+</div>
+<dialog id="gesture_dialog">
+  <h3 data-i18n="options_gesture_dialog_title">Record a gesture inside the box</h3>
+  <div id="canvas_container" style="position: relative; width: 400px; height: 300px; margin: 0 auto; border: 1px solid #ccc; background: white;">
+    <canvas id="gesture_canvas" width="400" height="300"></canvas>
+  </div>
+  <div id="action_result" style="height: 40px; margin: 10px;"></div>
+  <div id="gesture_mode_row" style="margin: 8px 0 12px; text-align: center;">
+    <label for="gesture_modifier_mode" style="cursor: pointer; margin-right: 12px;">
+      <input type="checkbox" id="gesture_modifier_mode">
+      <span data-i18n="options_gesture_modifier_mode">Enable modifier gesture</span>
+    </label>
+
+    <label for="gesture_modifier_type" style="cursor: pointer;">
+      <span data-i18n="options_gesture_modifier_type">Modifier key</span>:
+      <select id="gesture_modifier_type" style="margin-left: 6px;">
+        <option value="L">L+</option>
+        <option value="Shift">Shift+</option>
+        <option value="Ctrl">Ctrl+</option>
+        <option value="Alt">Alt+</option>
+      </select>
+    </label>
+  </div>
+  <div style="text-align: center;">
+    <button id="gesture_ok_button" disabled>OK</button>
+    <button id="gesture_cancel_button" data-i18n="options_cancel">Cancel</button>
+  </div>
+</dialog>
+</div>
+<script src="js/options.js"></script>
+</body>
+</html>
