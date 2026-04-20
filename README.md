@@ -16,13 +16,13 @@ Munus Gesture is a Chrome extension designed to improve browsing efficiency with
 
 ## Support
 
-Project page:
+Project page:  
 https://munusmodulus.github.io/munusgesture/  
 
-Repository:
+Repository:  
 https://github.com/MunusModulus/munusgesture  
 
-Contact:
+Contact:  
 munusmodulus+dev@gmail.com
 
 ## License
