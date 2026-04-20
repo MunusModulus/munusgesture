@@ -16,14 +16,19 @@ Munus Gesture is a Chrome extension designed to improve browsing efficiency with
 
 ## Support
 
-Project page: https://munusmodulus.github.io/munusgesture/  
-Repository: https://github.com/MunusModulus/munusgesture  
-Contact: munusmodulus+dev@gmail.com
+Project page:
+https://munusmodulus.github.io/munusgesture/  
+
+Repository:
+https://github.com/MunusModulus/munusgesture  
+
+Contact:
+munusmodulus+dev@gmail.com
 
 ## License
 
 MIT
 
 ## Legal
-
-Tokushōhō page: https://munusmodulus.github.io/munusgesture/docs/tokushoho.html
+特定商取引法に基づく表記：
+https://munusmodulus.github.io/munusgesture/docs/tokushoho.html
