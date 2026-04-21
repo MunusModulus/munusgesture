@@ -28,7 +28,8 @@ munusmodulus+dev@gmail.com
 ## License
 
 MIT
-
+<!-- 
 ## Legal
 特定商取引法に基づく表記：  
 https://munusmodulus.github.io/munusgesture/docs/tokushoho.html
+-->
